@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Last Minute Life Saver</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+</head>
+<body>
+  <div class="app">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="logo">
+        <div class="logo-icon"><i class="ti ti-bolt"></i></div>
+        <span class="logo-text">LifeSaver AI</span>
+      </div>
+      <div class="nav-item active" onclick="showSection('chat')">
+        <i class="ti ti-message-2"></i> AI Chat
+      </div>
+      <div class="nav-item" onclick="showSection('tasks')">
+        <i class="ti ti-list-check"></i> My Tasks
+      </div>
+      <div class="nav-item" onclick="showSection('schedule')">
+        <i class="ti ti-calendar"></i> Schedule
+      </div>
+      <div class="nav-item" onclick="showSection('progress')">
+        <i class="ti ti-chart-bar"></i> Progress
+      </div>
+      <div class="nav-label">Active Tasks</div>
+      <div id="sidebar-tasks"></div>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+      <div class="topbar">
+        <span class="topbar-title">AI Productivity Companion</span>
+        <span class="badge">
+          <i class="ti ti-circle-filled" style="font-size:8px;color:#639922;vertical-align:1px"></i> Online
+        </span>
+      </div>
+
+      <!-- Chat Section -->
+      <div id="section-chat" class="section active">
+        <div class="chat" id="chat-box">
+          <div class="msg">
+            <div class="avatar ai">AI</div>
+            <div class="bubble ai">
+              Hey! I'm your productivity companion. Tell me what tasks you're juggling today — I'll help you prioritize and build a plan to get them done!
+            </div>
+          </div>
+        </div>
+        <div class="quick-btns">
+          <button class="qbtn" onclick="quickPrompt('Prioritize my tasks')">Prioritize tasks ↗</button>
+          <button class="qbtn" onclick="quickPrompt('Build my schedule for today')">Build schedule ↗</button>
+          <button class="qbtn" onclick="quickPrompt('Give me productivity tips')">Productivity tips ↗</button>
+        </div>
+        <div class="input-area">
+          <input class="input-box" id="user-input" placeholder="Ask me anything about your tasks..." onkeydown="if(event.key==='Enter') sendMessage()"/>
+          <button class="send-btn" onclick="sendMessage()">
+            <i class="ti ti-send"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tasks Section -->
+      <div id="section-tasks" class="section">
+        <div class="section-inner">
+          <h2 class="section-heading">My Tasks</h2>
+          <div class="add-task-row">
+            <input class="input-box" id="task-input" placeholder="Add a new task with deadline e.g. Physics assignment - tonight"/>
+            <button class="send-btn" onclick="addTask()"><i class="ti ti-plus"></i></button>
+          </div>
+          <div id="task-list"></div>
+        </div>
+      </div>
+
+      <!-- Schedule Section -->
+      <div id="section-schedule" class="section">
+        <div class="section-inner">
+          <h2 class="section-heading">Today's Schedule</h2>
+          <div id="schedule-content">
+            <p style="color:#71717a;font-size:13px;">Add tasks and ask the AI to build your schedule!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Section -->
+      <div id="section-progress" class="section">
+        <div class="section-inner">
+          <h2 class="section-heading">Progress</h2>
+          <div class="progress-cards">
+            <div class="prog-card">
+              <div class="prog-num" id="prog-total">0</div>
+              <div class="prog-label">Total Tasks</div>
+            </div>
+            <div class="prog-card">
+              <div class="prog-num" id="prog-done">0</div>
+              <div class="prog-label">Completed</div>
+            </div>
+            <div class="prog-card">
+              <div class="prog-num" id="prog-pending">0</div>
+              <div class="prog-label">Pending</div>
+            </div>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="prog-bar"></div>
+          </div>
+          <p style="font-size:12px;color:#71717a;margin-top:8px;" id="prog-percent">0% completed</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
