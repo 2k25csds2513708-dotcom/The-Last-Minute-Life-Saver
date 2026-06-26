@@ -21,7 +21,7 @@ public class GeminiService {
             headers.set("HTTP-Referer", "http://localhost:8080");
 
             String body = String.format(
-                "{\"model\": \"mistralai/mistral-7b-instruct:free\", \"messages\": [{\"role\": \"user\", \"content\": \"%s\"}]}",
+                "{\"model\": \"openrouter/free\", \"messages\": [{\"role\": \"user\", \"content\": \"%s\"}]}",
                 prompt.replace("\"", "'").replace("\n", " ")
             );
 
