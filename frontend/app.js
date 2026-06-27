@@ -90,9 +90,9 @@ function removeTyping() {
 function extractGeminiText(data) {
   try {
     const parsed = typeof data === "string" ? JSON.parse(data) : data;
-    return parsed.choices[0].message.content;
+    return parsed.candidates[0].content.parts[0].text;
   } catch {
-    return "I got a response but couldn't read it properly.";
+    return "I got a response but couldn't read it properly. Please try again.";
   }
 }
 
