@@ -32,4 +32,4 @@ public class TaskController {
         String prompt = "You are a helpful AI productivity companion. The user says: " + message + ". Give a helpful, concise response focused on productivity, task management, and getting things done.";
         return geminiService.callGemini(prompt);
     }
-}
+} 
